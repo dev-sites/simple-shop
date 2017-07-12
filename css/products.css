@@ -1,0 +1,16 @@
+.products {
+  text-align: center;
+}
+
+.products-list {
+  padding: 0;
+}
+
+.product {
+  list-style: none;
+  display: inline-block;
+  width: 15%;
+  height: 200px;
+  margin: 3% 0 0 10px;
+  box-shadow: 1px 1px 3px 1px #777;
+}
