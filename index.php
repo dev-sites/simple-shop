@@ -12,7 +12,6 @@
     <title></title>
     <link rel="stylesheet" href="css/typography.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/products.css">
   </head>
   <body>
     <div class="container">
@@ -26,7 +25,7 @@
               echo '<p>Welcome, please <a href="login.php">Login</a> or <a href="register.php">Register</a></p>';
             }
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
-              echo ' <p><a href="users.php">Manage users</a></p>';
+              echo ' <p><a href="dashboard">Dashboard</a></p>';
             }
           ?>
         </div>
@@ -34,12 +33,21 @@
       </header>
       <section class="products">
         <ul class="products-list">
-          <li class="product"></li>
-          <li class="product"></li>
-          <li class="product"></li>
-          <li class="product"></li>
-          <li class="product"></li>
-          <li class="product"></li>
+          <?php
+            $db = mysqli_connect('localhost', 'root', '', 'e-shop');
+            $sql = 'SELECT * FROM products';
+            $result = mysqli_query($db, $sql);
+            foreach ($result as $row) {
+              printf('<li class="product">
+                        <a href="products/product.php?id=%s"
+                        <span class="product-title">%s</span>
+                        <img class="product-image" src="%s"></img>
+                        <span class="product-price">%s€</span>
+                        </a>
+                      </li>',$row['id'], $row['title'], $row['picture'], $row['price']);
+            }
+            mysqli_close($db);
+          ?>
         </ul>
       </section>
       <!-- <section class="showcase">

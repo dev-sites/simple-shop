@@ -20,3 +20,122 @@ a {
 a:hover {
   text-decoration: none;
 }
+
+/**************************
+LOGIN & REGISTER FORMS
+**************************/
+
+.form-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.input-form {
+  background-color: white;
+  box-shadow: 1px 1px 5px 1px #bbb;
+  position: absolute;
+  padding: 25px 25px 40px;
+  height: auto;
+  width: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.input-form h1 {
+  color: #00aee6;
+  font-size: 3em;
+  margin-bottom: 65px;
+}
+
+.input-field-container {
+  width: 250px;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 15px;
+}
+
+.input-field {
+  height: 30px;
+  width: 250px;
+  border: 0;
+  border-bottom: 1px solid #666;
+  margin-bottom: 5px;
+  padding-top: 10px;
+  font-size: 1em;
+  color: #666;
+}
+
+.input-field:focus {
+  transition: color .5s;
+  color: #00aee6;
+}
+
+.input-placeholder {
+  position: absolute;
+  color: #666;
+  pointer-events: none;
+  font-size: 1em;
+  top: 15px;
+}
+
+.input-placeholder-focused {
+  transition: all .5s;
+  top: 0px;
+  font-size: 0.7em;
+  color: #00aee6;
+}
+
+.input-placeholder-blurred {
+  transition: all .5s;
+  top: 15px;
+  font-size: 1em;
+  color: #666;
+}
+
+.input-placeholder-blurred-full {
+  transition: color .5s;
+  top: 0px;
+  font-size: 0.7em;
+  color: #666;
+}
+
+.border {
+  position: absolute;
+  width: 250px;
+  height: 2px;
+  background-color: #00aee6;
+  top: 40px;
+  right: 98px;
+  left: -250px;
+}
+
+.border-focused {
+  transition: left .3s;
+  left: 0;
+}
+
+.border-blurred {
+  transition: left .5s;
+  left: -250px;
+}
+
+.submit-button {
+  width: 250px;
+  height: 35px;
+  border: 0;
+  background-color: #00aee6;
+  border-radius: 50px;
+  margin-top: 40px;
+  color: white;
+  font-weight: bold;
+  box-shadow: 1px 1px 5px 1px #bbb;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  transition: box-shadow .2s;
+  box-shadow: 1px 1px 10px 1px #bbb;
+}

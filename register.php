@@ -2,18 +2,7 @@
   session_start();
   if(isset($_SESSION['username'])) {
     header('Location: index.php');
-  }
-?>
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Register</title>
-    <link rel="stylesheet" href="css/typography.css">
-    <link rel="stylesheet" href="css/main.css">
-  </head>
-  <body>
-    <?php
+  }else {
     if (isset($_POST['submit'])) {
       $username = $_POST['username'];
       $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -28,8 +17,18 @@
       header('Location: index.php');
       exit();
     }
-    ?>
-    <form  class="user-form" action="" method="post">
+  }
+?>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+    <form  class="input-form" action="" method="post">
       <h1>Register</h1>
       <div class="input-field-container">
           <span class="input-placeholder">Username</span>
@@ -48,6 +47,6 @@
       </div>
       <input class="submit-button" type="submit" name="submit" value="Submit">
     </form>
-    <script src="js/login.js" charset="utf-8"></script>
+    <script src="js/input.js" charset="utf-8"></script>
   </body>
 </html>

@@ -1,0 +1,42 @@
+.product-page {
+  width: 90%;
+  margin: 5% auto;
+}
+
+.product-page-image {
+  display: inline-block;
+  float: left;
+  margin-right: 50px;
+}
+
+.product-page-image img {
+  width: 250px;
+  height: 250px;
+}
+
+.product-page-title {
+  color: #00aee6;
+  diplay: inline-block;
+}
+
+.buy-btn {
+  background-color: #00aee6;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  font-weight: bold;
+  border: 0;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.product-page-desc {
+  display: block;
+}
+
+.product-page-price {
+  display: inline-block;
+  background-color: #00aee6;
+  color: #fff;
+  padding: 2px 10px;
+}
