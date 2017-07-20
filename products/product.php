@@ -22,7 +22,7 @@
               echo '<p>Welcome, please <a href="login.php">Login</a> or <a href="register.php">Register</a></p>';
             }
             if (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) {
-              echo ' <p><a href="dashboard">Dashboard</a></p>';
+              echo ' <p><a href="/simple-shop/dashboard">Dashboard</a></p>';
             }
           ?>
         </div>

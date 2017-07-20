@@ -38,7 +38,7 @@
     <section class="main-content">
       <div class="add-product">
         <input type="button" class="add-product-accordion" value="Add Product">
-        <div class="add-product-form">
+        <div class="add-product-form hidden">
           <form class="form" action="" method="post" enctype="multipart/form-data">
             <div class="input-field-container">
               <span class="input-placeholder">Product Title</span>
@@ -55,14 +55,14 @@
               <input type="text" class="input-field" name="price" value="">
               <span class="border"></span>
             </div>
-            <input type="file" name="image" value="Upload product image" class="image-upload-button" enctype="multipart/form-data">
+            <div class="product-image">
+              <p>The default product image is</p>
+              <img src="../img/default_product.png" alt="">
+              <p>Upload Image</p>
+              <input type="file" name="image" value="Upload product image" class="image-upload-button" enctype="multipart/form-data">
+            </div>
             <input type="submit" class="submit-button" name="add-product" value="Add Product">
           </form>
-          <div class="product-image">
-            <p>The default product image is</p>
-            <img src="../img/default_product.png" alt="">
-            <p>Upload Image</p>
-          </div>
         </div>
       </div>
       <div class="products">
@@ -72,12 +72,31 @@
             $sql = 'SELECT * FROM products';
             $result = mysqli_query($db, $sql);
             foreach ($result as $row) {
-              printf('<li>%s</li>', $row['title']);
+              printf('<li class="product">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        <h3>%s</h3>
+                        <div class="product-info hidden">
+                          <img src="%s">
+                          <p>%s</p>
+                          <h5>%s€</h5>
+                          <span class="manage-product">
+                            <a href="edit.php?id=%s">
+                              <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </a>
+                            <a href="delete.php?id=%s">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                            </a>
+                          </span>
+                        </div>
+                      </li>', $row['title'], $row['picture'], $row['description'], $row['price'], $row['id'], $row['id']);
             }
           ?>
         </ul>
       </div>
     </section>
+    <div class="">
+
+    </div>
     <script src="../js/products.js" charset="utf-8"></script>
     <script src="../js/input.js" charset="utf-8"></script>
   </body>

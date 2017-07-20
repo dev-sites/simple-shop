@@ -1,3 +1,7 @@
+/**************************
+PRODUCT PAGE
+**************************/
+
 .add-product {
   padding: 20px;
 }
@@ -14,14 +18,19 @@
   box-shadow: 1px 1px 1px 1px #bbb;
 }
 
+.add-product-accordion-focused {
+  background-color: #2b2d40;
+  color: #fff;
+}
+
 .add-product-form {
   width: 80%;
   height: auto;
   margin: 0 auto;
   display: flex;
   background-color: #fff;
-  display: none;
   box-shadow: 1px 1px 1px 1px #bbb;
+  position: relative;
 }
 
 .form {
@@ -70,6 +79,9 @@
   height: 250px;
   display: inline-block;
   background-color: inherit;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .product-image img {
@@ -81,8 +93,116 @@
   display: block;
 }
 
-.image-upload-button {
+.products {
+  padding: 20px;
+}
+
+.products ul {
+  width: 80%;
+  margin: 0 auto;
+  padding: 0;
+  box-shadow: 1px 1px 1px 1px #bbb;
+}
+
+.product {
+  background-color: #fff;
+  list-style: none;
+  text-align: left;
+  clear: both;
+}
+
+.product:hover {
+  transition: background-color .3s;
+  background-color: #2b2d40;
+  color: white;
+}
+
+.product:hover .fa-minus, .product:hover .fa-plus {
+  color: white;
+}
+
+.product-focused {
+  background-color: #2b2d40;
+  color: white;
+}
+
+.product-focused .fa-minus {
+  color: white;
+}
+
+.product .fa {
+  font-size: 1em;
+  display: inline;
+  margin-left: 5px;
+  pointer-events: none;
+}
+
+.product h3 {
+  font-size: 1em;
+}
+
+.product-info {
+  background-color: #fff;
+  color: #2b2d40;
+  height: 100px;
+  position: relative;
+}
+
+.product-info img {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+.product-info h5 {
+  display: block;
+}
+
+.manage-product {
   position: absolute;
-  top: 58%;
-  left: 70%;
+  right: 10px;
+  top: 40px;
+  border-left: 1px solid #ccc;
+}
+
+.manage-product .fa {
+  font-size: 1.5em;
+  margin-left: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+/**************************
+EDIT PAGE
+**************************/
+
+.edit-product {
+  background-color: #fff;
+  width: 60%;
+  margin: 10px auto;
+  padding-bottom: 20px;
+}
+
+.edit-title {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: #2b2d40;
+  text-align: left;
+  color: #fff;
+}
+
+.edit-title p {
+  display: inline-block;
+  padding-left: 10px;
+  font-size: 1em;
+}
+
+.product-image {
+  width: 100%;
+  text-align: center;
+  position: static;
+  display: block;
 }
