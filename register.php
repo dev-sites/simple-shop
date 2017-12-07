@@ -1,16 +1,16 @@
 <?php
   session_start();
-  if(isset($_SESSION['username'])) {
+  if(isset($_SESSION['email'])) {
     header('Location: index.php');
   }else {
     if (isset($_POST['submit'])) {
-      $username = $_POST['username'];
+      $email = $_POST['email'];
       $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
       $db = mysqli_connect('localhost', 'root', '', 'e-shop');
-      $sql = sprintf("INSERT INTO users (username, password) VALUES (
+      $sql = sprintf("INSERT INTO users (email, password) VALUES (
         '%s', '%s'
-      )", mysqli_real_escape_string($db, $username),
+      )", mysqli_real_escape_string($db, $email),
           mysqli_real_escape_string($db, $hash));
       mysqli_query($db, $sql);
       mysqli_close($db);
@@ -31,8 +31,8 @@
     <form  class="input-form" action="" method="post">
       <h1>Register</h1>
       <div class="input-field-container">
-          <span class="input-placeholder">Username</span>
-          <input class="input-field" type="text" name="username">
+          <span class="input-placeholder">email</span>
+          <input class="input-field" type="text" name="email">
           <span class="border"></span>
       </div>
       <div class="input-field-container">

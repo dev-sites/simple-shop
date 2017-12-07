@@ -15,8 +15,8 @@
       <header>
         <div class="welcome-text">
           <?php
-            if (isset($_SESSION['username'])) {
-              echo '<p>Welcome ' . $_SESSION['username'] . ' ';
+            if (isset($_SESSION['email'])) {
+              echo '<p>Welcome ' . $_SESSION['email'] . ' ';
               echo '<a href="logout.php">Logout</a></p>';
             } else {
               echo '<p>Welcome, please <a href="login.php">Login</a> or <a href="register.php">Register</a></p>';

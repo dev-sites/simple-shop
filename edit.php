@@ -7,12 +7,12 @@
     header('Location: index.php');
     exit();
   }
-  $username = '';
+  $email = '';
   $db = mysqli_connect('localhost', 'root', '', 'e-shop');
   $sql = "SELECT * FROM users WHERE id=$id";
   $result = mysqli_query($db, $sql);
   foreach ($result as $row) {
-    $username = $row['username'];
+    $email = $row['email'];
   }
 ?>
 <!DOCTYPE html>
@@ -24,8 +24,8 @@
   <body>
     <?php
       if (isset($_POST['submit'])) {
-        if ($_POST['username']) {
-          $sql = sprintf("UPDATE users SET username='%s' WHERE id='%s'", $_POST['username'], $id);
+        if ($_POST['email']) {
+          $sql = sprintf("UPDATE users SET email='%s' WHERE id='%s'", $_POST['email'], $id);
           $result = mysqli_query($db, $sql);
         }
         if ($_POST['password']) {
@@ -38,9 +38,9 @@
       }
     ?>
     <form action="" method="post">
-      Username:
-        <input type="text" name="username" value="<?php
-          echo $username;
+      email:
+        <input type="text" name="email" value="<?php
+          echo $email;
         ?>"><br><br>
       Password:
         <input type="password" name="password"><br>

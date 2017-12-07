@@ -20,8 +20,8 @@
       <header>
         <div class="welcome-text">
           <?php
-            if (isset($_SESSION['username'])) {
-              echo '<p>Welcome ' . $_SESSION['username'] . ' ';
+            if (isset($_SESSION['email'])) {
+              echo '<p>Welcome ' . $_SESSION['email'] . ' ';
               echo '<a href="logout.php">Logout</a></p>';
             } else {
               echo '<p>Welcome, please <a href="login.php">Login</a> or <a href="register.php">Register</a></p>';
@@ -39,14 +39,16 @@
             $db = mysqli_connect('localhost', 'root', '', 'e-shop');
             $sql = 'SELECT * FROM products';
             $result = mysqli_query($db, $sql);
+
             foreach ($result as $row) {
+              echo $row['name'];/*
               printf('<li class="product">
                         <a href="products/product.php?id=%s"
                         <span class="product-title">%s</span>
                         <img class="product-image" src="%s"></img>
                         <span class="product-price">%s€</span>
                         </a>
-                      </li>',$row['id'], $row['title'], $row['picture'], $row['price']);
+                      </li>',$row['id'], $row['title'], $row['picture'], $row['price']);*/
             }
             mysqli_close($db);
           ?>

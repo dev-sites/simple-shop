@@ -18,7 +18,7 @@
           printf('<li>%s</li>
                   <a href="edit.php?id=%s">edit</a>
                   <a href="delete.php?id=%s">delete</a>',
-                 $row['username'],
+                 $row['email'],
                  $row['id'],
                  $row['id']
           );
