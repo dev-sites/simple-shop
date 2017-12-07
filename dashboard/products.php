@@ -16,9 +16,12 @@
     <?php
       $db = mysqli_connect('localhost', 'root', '', 'e-shop');
       if (isset($_POST['add-product'])) {
-        $title = $_POST['title'];
+        $name = $_POST['name'];
         $description = $_POST['description'];
         $price = $_POST['price'];
+        $category_id = $_POST['category_id'];
+        $status_id = $_POST['status_id'];
+        $code = $_POST['code'];
         $target_dir = "../img/";
         $fileName = basename($_FILES["image"]["name"]);
         $target_file = $target_dir . $fileName;
@@ -26,9 +29,9 @@
         $db_dir = "/simple-shop/img/";
         $db_file = $db_dir . $fileName;
         if($_FILES["image"]["name"]){
-          $sql = sprintf("INSERT INTO products (title, picture, description, price) VALUES ('%s', '%s', '%s', '%s')", $title, $db_file, $description, $price);
+          $sql = sprintf("INSERT INTO products (name, picture, description, price, category_id, status_id, code) VALUES ('%s', '%s', '%s', %s, %s, %s, %s)", $name, $db_file, $description, $price, $category_id, $status_id, $code);
         } else {
-          $sql = sprintf("INSERT INTO products (title, description, price) VALUES ('%s', '%s', '%s')", $title, $description, $price);
+          $sql = sprintf("INSERT INTO products (name, description, price, category_id, status_id, code) VALUES ('%s', '%s', %s, %s, %s, %s)", $name, $description, $price, $category_id, $status_id, $code);
         }
         mysqli_query($db, $sql);
         mysqli_close($db);
@@ -41,8 +44,8 @@
         <div class="add-product-form hidden">
           <form class="form" action="" method="post" enctype="multipart/form-data">
             <div class="input-field-container">
-              <span class="input-placeholder">Product Title</span>
-              <input type="text" class="input-field" name="title" value="">
+              <span class="input-placeholder">Product name</span>
+              <input type="text" class="input-field" name="name" value="">
               <span class="border"></span>
             </div>
             <div class="input-field-container">
@@ -53,6 +56,30 @@
             <div class="input-field-container">
               <span class="input-placeholder">Product Price</span>
               <input type="text" class="input-field" name="price" value="">
+              <span class="border"></span>
+            </div>
+            <div class="input-field-container">
+              <span class="input-placeholder">Category</span>
+              <select name="category_id">
+                <option selected="selected">Категория</option>
+                <option value="1">Акустика</option>
+                <option value="2">Электро</option>
+              </select>
+              <!--input type="text" class="input-field" name="category_id" value="">
+              <span class="border"></span-->
+            </div>
+            <div class="input-field-container">
+              <span class="input-placeholder">Status</span>
+              <select name="status_id">
+                <option selected="selected">Статус</option>
+                <option value="1">В наличии</option>
+                <option value="2">Ожидается</option>
+                <option value="3">Отсутствует</option>
+              </select>
+            </div>
+            <div class="input-field-container">
+              <span class="input-placeholder">Code</span>
+              <input type="text" class="input-field" name="code" value="">
               <span class="border"></span>
             </div>
             <div class="product-image">
@@ -88,7 +115,7 @@
                             </a>
                           </span>
                         </div>
-                      </li>', $row['title'], $row['picture'], $row['description'], $row['price'], $row['id'], $row['id']);
+                      </li>', $row['name'], $row['picture'], $row['description'], $row['price'], $row['id'], $row['id']);
             }
           ?>
         </ul>
