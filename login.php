@@ -1,27 +1,28 @@
 <?php
   session_start();
-  if (isset($_POST['username']) && isset($_POST['password'])) {
+  if (isset($_POST['email']) && isset($_POST['password'])) {
     $db = mysqli_connect('localhost', 'root', '', 'e-shop');
-    $sql = sprintf("SELECT * from users WHERE username='%s'",
-        mysqli_real_escape_string($db, $_POST['username'])
+    $sql = sprintf("SELECT * from users WHERE email='%s'",
+        mysqli_real_escape_string($db, $_POST['email'])
     );
     $result = mysqli_query($db, $sql);
     $row = mysqli_fetch_assoc($result);
     if ($row) {
-      $hash = $row['password'];
       $isAdmin = $row['isAdmin'];
       $id = $row['id'];
-      if (password_verify($_POST['password'], $hash)) {
-        $_SESSION['username'] = $row['username'];
+      $hash = password_hash($row['password'], PASSWORD_BCRYPT);
+
+      if (password_verify($_POST['password'], $hash)) { 
+        $_SESSION['email'] = $row['email'];
         $_SESSION['isAdmin'] = $isAdmin;
         $_SESSION['id'] = $id;
         header('Location: index.php');
         exit();
       } else {
-        echo 'Wrong username or password';
+        echo 'Wrong email or ';
       }
     } else {
-      echo 'Wrong username or password';
+      echo 'Wrong email or password';
     }
     mysqli_close($db);
   }
@@ -40,8 +41,8 @@
       <form  class="input-form" action="" method="post">
         <h1>Login</h1>
         <div class="input-field-container">
-            <span class="input-placeholder">Username</span>
-            <input class="input-field" type="text" name="username">
+            <span class="input-placeholder">email</span>
+            <input class="input-field" type="text" name="email">
             <span class="border"></span>
         </div>
         <div class="input-field-container">
