@@ -105,7 +105,7 @@
                         <div class="product-info hidden">
                           <img src="%s">
                           <p>%s</p>
-                          <h5>%s€</h5>
+                          <h5>%sР</h5>
                           <span class="manage-product">
                             <a href="edit.php?id=%s">
                               <i class="fa fa-pencil" aria-hidden="true"></i>

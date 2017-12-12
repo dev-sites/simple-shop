@@ -41,14 +41,14 @@
             $result = mysqli_query($db, $sql);
 
             foreach ($result as $row) {
-              echo $row['name'];/*
+              /*echo $row['name'];*/
               printf('<li class="product">
                         <a href="products/product.php?id=%s"
                         <span class="product-title">%s</span>
                         <img class="product-image" src="%s"></img>
-                        <span class="product-price">%s€</span>
+                        <span class="product-price">%sР</span>
                         </a>
-                      </li>',$row['id'], $row['title'], $row['picture'], $row['price']);*/
+                      </li>',$row['id'], $row['name'], $row['picture'], $row['price']);
             }
             mysqli_close($db);
           ?>
