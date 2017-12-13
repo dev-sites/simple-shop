@@ -32,10 +32,11 @@
         <?php
           $id = $_GET['id'];
           $db = mysqli_connect('localhost', 'root', '', 'e-shop');
+          $db->set_charset("utf8");
           $sql = sprintf("SELECT * FROM products WHERE id='%s'", $id);
           $result = mysqli_query($db, $sql);
           foreach ($result as $row) {
-            $title = $row['title'];
+            $title = $row['name'];
             $picture = $row['picture'];
             $description = $row['description'];
             $price = $row['price'];
@@ -47,13 +48,14 @@
         <div class="product-page-title">
           <h3><?php echo $title ?></h3>
         </div>
+        <div class="product-page-price">
+          <p><?php echo $price ?>Р</p>
+        </div>
         <input class="buy-btn" type="button" name="" value="Buy Now!">
         <div class="product-page-desc">
           <p><?php echo $description ?></p>
         </div>
-        <div class="product-page-price">
-          <p><?php echo $price ?>€</p>
-        </div>
+        
       </section>
   </body>
 </html>
