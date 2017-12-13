@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 12 2017 г., 13:30
+-- Время создания: Дек 13 2017 г., 15:21
 -- Версия сервера: 5.7.19
--- Версия PHP: 7.1.9
+-- Версия PHP: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -51,9 +51,22 @@ INSERT INTO `category` (`id`, `name`) VALUES
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE IF NOT EXISTS `orders` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `product_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `cost` int(11) NOT NULL,
+  `address` text NOT NULL,
+  `status` varchar(64) NOT NULL,
+  `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `orders`
+--
+
+INSERT INTO `orders` (`id`, `product_id`, `date`, `cost`, `address`, `status`, `user_id`) VALUES
+(1, 1, '2017-12-06', 1234, 'feffef', 'В сборке', 1);
 
 -- --------------------------------------------------------
 
@@ -74,14 +87,15 @@ CREATE TABLE IF NOT EXISTS `products` (
   PRIMARY KEY (`id`),
   KEY `category_id` (`category_id`),
   KEY `status_id` (`status_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `products`
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `category_id`, `status_id`, `code`, `price`, `picture`) VALUES
-(3, 'Yamaha FSX315CTBS', 'Качественная электроакустическая гитара с системой звукоснимателей - доступная, с удобным грифом и приятным внешним видом. Гитара, которая подойдет как для домашних занятий, так и для выступлений на сцене.', 2, 2, 312311, 17990, 'http://i6.jazz-shop.ru/62/22/52262/89201/89201.200-n.jpg');
+(1, 'ewwewe', 'wewew', 1, 1, 12, 212, NULL),
+(2, 'yamaha', 'wrg', 1, 2, 234, 212, NULL);
 
 -- --------------------------------------------------------
 
@@ -119,14 +133,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `isAdmin` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `isAdmin`) VALUES
-(1, 'Вика', 'admin', '123456', 1),
+(1, 'Вика', 'admin@mail.ru', '123456', 1),
 (2, 'Александр', 'sasha', '543210', 0);
 
 --
