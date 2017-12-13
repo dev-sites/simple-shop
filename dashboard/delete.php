@@ -1,13 +1,15 @@
 <?php
-  session_start();
+  session_start();  
+  $del = $_GET['del'];
+  echo $del;
   if (!$_GET['id'] || !ctype_digit($_GET['id'])) {
-    header('Location: products.php');
+    header("Location: $del.php");
   } else {
     $id = $_GET['id'];
     $db = mysqli_connect('localhost', 'root', '', 'e-shop');
-    $sql = "DELETE FROM products WHERE id=$id";
+    $sql = "DELETE FROM $del WHERE id=$id";
     mysqli_query($db, $sql);
-    header('Location: products.php');
+    header("Location: $del.php");
     exit();
   }
 ?>

@@ -107,10 +107,10 @@
                           <p>%s</p>
                           <h5>%sР</h5>
                           <span class="manage-product">
-                            <a href="edit.php?id=%s">
+                            <a href="edit.php?del=products&id=%s">
                               <i class="fa fa-pencil" aria-hidden="true"></i>
                             </a>
-                            <a href="delete.php?id=%s">
+                            <a href="delete.php?del=products&id=%s">
                               <i class="fa fa-trash" aria-hidden="true"></i>
                             </a>
                           </span>
